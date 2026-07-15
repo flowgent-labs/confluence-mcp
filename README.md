@@ -547,8 +547,8 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 For questions, suggestions, or support:
 
-- **GitHub Issues**: [Create an issue](./confluence-mcp/issues)
-- **Discussions**: [Start a discussion](./confluence-mcp/discussions)
+- **GitHub Issues**: [Create an issue](../../confluence-mcp/issues)
+- **Discussions**: [Start a discussion](../../confluence-mcp/discussions)
 - **Email**: <jameswong1376@gmail.com>
 
 ## Acknowledgments

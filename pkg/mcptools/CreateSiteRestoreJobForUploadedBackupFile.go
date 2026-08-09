@@ -40,20 +40,6 @@ func CreateSiteRestoreJobForUploadedBackupFileHandler(ctx context.Context, reque
 	if args == nil {
 		args = make(map[string]interface{})
 	}
-	fileName := ""
-	if fn, ok := args["file_name"]; ok {
-		if s, ok := fn.(string); ok {
-			fileName = s
-		}
-	}
-	if fileName == "" {
-		return mcp.NewToolResultError("missing required argument: file_name"), nil
-	}
-	fileContentBase64 := ""
-	if fc, ok := args["file_content"]; ok {
-		if s, ok := fc.(string); ok {
-			fileContentBase64 = s
-		}
-	}
-	return mcputils.ForwardUploadRequest(ctx, upstream, "POST", "/confluence/rest/api/backup-restore/restore/site/upload", fileName, fileContentBase64, "multipart/form-data", "CreateSiteRestoreJobForUploadedBackupFile")
+	contentType := "multipart/form-data"
+	return mcputils.ForwardAndParseResponse(ctx, upstream, "POST", "/confluence/rest/api/backup-restore/restore/site/upload", args, []string{}, contentType, "CreateSiteRestoreJobForUploadedBackupFile")
 }

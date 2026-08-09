@@ -40,20 +40,6 @@ func UpdateDataHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	if args == nil {
 		args = make(map[string]interface{})
 	}
-	fileName := ""
-	if fn, ok := args["file_name"]; ok {
-		if s, ok := fn.(string); ok {
-			fileName = s
-		}
-	}
-	if fileName == "" {
-		return mcp.NewToolResultError("missing required argument: file_name"), nil
-	}
-	fileContentBase64 := ""
-	if fc, ok := args["file_content"]; ok {
-		if s, ok := fc.(string); ok {
-			fileContentBase64 = s
-		}
-	}
-	return mcputils.ForwardUploadRequest(ctx, upstream, "POST", "/confluence/rest/api/content/{id}/child/attachment/{attachmentId}/data", fileName, fileContentBase64, "multipart/form-data", "UpdateData")
+	contentType := "multipart/form-data"
+	return mcputils.ForwardAndParseResponse(ctx, upstream, "POST", "/confluence/rest/api/content/{id}/child/attachment/{attachmentId}/data", args, []string{"attachmentId", "id"}, contentType, "UpdateData")
 }

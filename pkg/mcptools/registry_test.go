@@ -9,7 +9,6 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	mcputils "confluence-mcp/pkg/helpers"
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
@@ -52,7 +51,7 @@ func TestRegistry_AllHandlersWork(t *testing.T) {
 	defer ts.Close()
 
 	t.Setenv("MCP__UPSTREAM__DEFAULT__ENDPOINT", ts.URL)
-	mcputils.LoadConfig("confluence-mcp")
+	installTestConfig(t, "confluence-mcp")
 
 	for name, entry := range Registry {
 		t.Run(name, func(t *testing.T) {
@@ -82,7 +81,7 @@ func TestRegistry_AllHandlersNilArgs(t *testing.T) {
 	defer ts.Close()
 
 	t.Setenv("MCP__UPSTREAM__DEFAULT__ENDPOINT", ts.URL)
-	mcputils.LoadConfig("confluence-mcp")
+	installTestConfig(t, "confluence-mcp")
 
 	for name, entry := range Registry {
 		t.Run(name, func(t *testing.T) {
@@ -110,7 +109,7 @@ func TestRegistry_AllHandlersUpstreamError(t *testing.T) {
 	defer ts.Close()
 
 	t.Setenv("MCP__UPSTREAM__DEFAULT__ENDPOINT", ts.URL)
-	mcputils.LoadConfig("confluence-mcp")
+	installTestConfig(t, "confluence-mcp")
 
 	count := 0
 	for name, entry := range Registry {

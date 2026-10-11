@@ -29,7 +29,7 @@ const GetAttachmentExtractedTextResponseTemplate_D = "# API Response Information
 func NewGetAttachmentExtractedTextMCPTool() mcp.Tool {
 	return mcp.NewToolWithRawSchema(
 		"GetAttachmentExtractedText",
-		"",
+		"Invoke getAttachmentExtractedText",
 		[]byte(GetAttachmentExtractedTextInputSchema),
 	)
 }

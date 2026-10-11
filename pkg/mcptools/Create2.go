@@ -20,7 +20,7 @@ const Create2ResponseTemplate_A = "# API Response Information\n\nBelow is the re
 func NewCreate2MCPTool() mcp.Tool {
 	return mcp.NewToolWithRawSchema(
 		"Create2",
-		"",
+		"Invoke create_2",
 		[]byte(Create2InputSchema),
 	)
 }

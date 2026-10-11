@@ -9,7 +9,6 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	mcputils "confluence-mcp/pkg/helpers"
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
@@ -48,7 +47,7 @@ func TestRevokePermissionsFromUser1Handler(t *testing.T) {
 		defer ts.Close()
 
 		t.Setenv("MCP__UPSTREAM__DEFAULT__ENDPOINT", ts.URL)
-		mcputils.LoadConfig("confluence-mcp")
+		installTestConfig(t, "confluence-mcp")
 
 		req := mcp.CallToolRequest{
 			Params: mcp.CallToolParams{
@@ -74,7 +73,7 @@ func TestRevokePermissionsFromUser1Handler(t *testing.T) {
 		defer ts.Close()
 
 		t.Setenv("MCP__UPSTREAM__DEFAULT__ENDPOINT", ts.URL)
-		mcputils.LoadConfig("confluence-mcp")
+		installTestConfig(t, "confluence-mcp")
 
 		req := mcp.CallToolRequest{
 			Params: mcp.CallToolParams{
@@ -98,7 +97,7 @@ func TestRevokePermissionsFromUser1Handler(t *testing.T) {
 		defer ts.Close()
 
 		t.Setenv("MCP__UPSTREAM__DEFAULT__ENDPOINT", ts.URL)
-		mcputils.LoadConfig("confluence-mcp")
+		installTestConfig(t, "confluence-mcp")
 
 		req := mcp.CallToolRequest{
 			Params: mcp.CallToolParams{

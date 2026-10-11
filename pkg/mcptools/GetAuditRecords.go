@@ -17,7 +17,7 @@ const GetAuditRecordsInputSchema = "{\n  \"type\": \"object\"\n}"
 func NewGetAuditRecordsMCPTool() mcp.Tool {
 	return mcp.NewToolWithRawSchema(
 		"GetAuditRecords",
-		"",
+		"Invoke getAuditRecords",
 		[]byte(GetAuditRecordsInputSchema),
 	)
 }
